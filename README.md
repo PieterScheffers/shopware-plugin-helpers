@@ -2,9 +2,9 @@
 Helper classes for Shopware plugin development
 
 
-#### Install
+## Install
 
-###### Shopware >= 4.3 plugin
+#### Shopware >= 4.3 plugin
 composer.json
 ```
 {
@@ -53,7 +53,7 @@ public function registerMyComponents()
 }
 ```
 
-###### Shopware >= 5.2 plugin
+#### Shopware >= 5.2 plugin
 
 composer.json
 ```
