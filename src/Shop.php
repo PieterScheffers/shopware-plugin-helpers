@@ -85,4 +85,32 @@ class Shop
 
 		// return Shopware()->Shop()->getMain();
 	}
+
+	public function getConfigValue($shopId, $key, $default = null)
+	{
+		if( $shopId instanceof Shopware\Models\Shop\Shop ) $shopId = $shop->getId();
+
+		if( !empty($shopId) )
+		{
+			$element = $this->getElementRepository()->findOneBy([ "name" => $key ]);
+
+			if( !empty($element) )
+			{
+				$values = $element->getValues()->toArray();
+
+				$valueModel = Ar::detect(function($value) use ($shopId) {
+					return $value->shop === $shopId;
+				});
+
+				if( $valueModel )
+				{
+					return $valueModel->getValue();
+				}
+
+				return $element->getValue();
+			}
+		}
+
+		return $default;
+	}
 }

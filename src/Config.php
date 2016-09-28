@@ -5,6 +5,7 @@ namespace pisc\Shopware;
 use Shopware_Components_Plugin_Bootstrap;
 use Shopware\Models\Config\Element;
 use Shopware_Components_Config;
+use pisc\Arrr\Ar;
 
 class ShopwareConfig 
 {
