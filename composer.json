@@ -6,7 +6,7 @@
         "php": ">=5.6",
         "pisc/upperscore": "*",
         "pisc/arrr": "*"
-    }
+    },
     "authors": [
         {
             "name": "Pieter Scheffers",
