@@ -98,8 +98,8 @@ class Shop
 			{
 				$values = $element->getValues()->toArray();
 
-				$valueModel = Ar::detect(function($value) use ($shopId) {
-					return $value->shop === $shopId;
+				$valueModel = Ar::detect($values, function($value) use ($shopId) {
+					return $value->getShop()->getId() == $shopId;
 				});
 
 				if( $valueModel )
