@@ -4,14 +4,18 @@ namespace pisc\Shopware;
 
 use Doctrine\Common\Collections\Criteria;
 use pisc\Arrr\Ar;
+use pisc\Shopware\Category;
 
 class Shop
 {
 	protected $em;
 
-	public function __construct()
+	protected $shopwareCategory;
+
+	public function __construct($entityManager, Category $shopwareCategory)
 	{
-		$this->em = Shopware()->Models();
+		$this->em = $entityManager;
+		$this->shopwareCategory = $shopwareCategory;
 	}
 
 	public function getShopRepository()
@@ -81,6 +85,19 @@ class Shop
 				return $element->getValue();
 			}
 		}
+	}
+
+	public function getCategories($shop)
+	{
+		$category = $shop->getCategory();
+		return $this->shopwareCategory->getAllChildren($category);
+	}
+
+	public function getArticles($shop)
+	{
+		return array_reduce($this->getCategories($shop), function($arr, $category) {
+			return array_merge($arr, $this->shopwareCategory->getArticles()->toArray());
+		}, []);
 	}
 
 	public function test()
