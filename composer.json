@@ -1,0 +1,26 @@
+{
+    "name": "pisc/shopware-plugin-helpers",
+    "description": "Helper classes for Shopware",
+    "license": "MIT",
+    "require": {
+        "php": ">=5.6"
+    }
+    "authors": [
+        {
+            "name": "Pieter Scheffers",
+            "email": "info@pieterscheffers.nl",
+            "homepage": "https://www.pieterscheffers.nl",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/PieterScheffers/shopware-plugin-helpers/issues",
+        "wiki": "https://github.com/PieterScheffers/shopware-plugin-helpers/wiki",
+        "source": "https://github.com/PieterScheffers/shopware-plugin-helpers"
+    },
+    "autoload": {
+        "psr-4": {
+            "pisc\\Shopware\\": "src/"
+        }
+    }
+}
