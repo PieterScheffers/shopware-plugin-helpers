@@ -95,13 +95,8 @@ class Shop
 
 	public function getArticles($shop)
 	{
-		return array_reduce($this->getCategories($shop), function($arr, $category) {
-			return array_merge($arr, $this->shopwareCategory->getArticles()->toArray());
+		return Ar::reduce($this->getCategories($shop), function($arr, $category) {
+			return array_merge($arr, $category->getArticles()->toArray());
 		}, []);
-	}
-
-	public function test()
-	{
-		echo "test";
 	}
 }
