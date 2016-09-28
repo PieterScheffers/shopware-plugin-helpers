@@ -12,10 +12,10 @@ class Shop
 
 	protected $shopwareCategory;
 
-	public function __construct($entityManager, Category $shopwareCategory)
+	public function __construct($entityManager)
 	{
 		$this->em = $entityManager;
-		$this->shopwareCategory = $shopwareCategory;
+		$this->shopwareCategory = new Category($entityManager);
 	}
 
 	public function getShopRepository()
