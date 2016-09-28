@@ -81,7 +81,7 @@ class Shop
 
 	public function getMainShop()
 	{
-		return $this->getShopRepository()->findOneBy([ "main_id" => null ]);
+		return $this->getShopRepository()->findOneBy([ "main" => null ]);
 
 		// return Shopware()->Shop()->getMain();
 	}
