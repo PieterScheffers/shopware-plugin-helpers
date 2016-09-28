@@ -61,32 +61,6 @@ class Shop
 		return $this->getShopRepository()->findOneBy([ "id" => $id ]);
 	}
 
-	public function getConfigValue($shopId, $key)
-	{
-		if( $shopId instanceof Shopware\Models\Shop\Shop ) $shopId = $shop->getId();
-
-		if( !empty($shopId) )
-		{
-			$element = $this->getElementRepository()->findOneBy([ "name" => $key ]);
-
-			if( !empty($element) )
-			{
-				$values = $element->getValues()->toArray();
-
-				$valueModel = Ar::detect(function($value) use ($shopId) {
-					return $value->shop === $shopId;
-				});
-
-				if( $valueModel )
-				{
-					return $valueModel->getValue();
-				}
-
-				return $element->getValue();
-			}
-		}
-	}
-
 	public function getCategories($shop)
 	{
 		$category = $shop->getCategory();
@@ -98,5 +72,10 @@ class Shop
 		return Ar::reduce($this->getCategories($shop), function($arr, $category) {
 			return array_merge($arr, $category->getArticles()->toArray());
 		}, []);
+	}
+
+	public function getMainShop()
+	{
+		return $this->getShopRepository()->findOneBy([ "main_id" => null ]);
 	}
 }
