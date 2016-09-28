@@ -56,6 +56,11 @@ class Shop
 		$this->em->flush();
 	}
 
+	public static function getAll()
+	{
+		return $this->getShopRepository()->findAll();
+	}
+
 	public function getById($id)
 	{
 		return $this->getShopRepository()->findOneBy([ "id" => $id ]);
@@ -77,5 +82,7 @@ class Shop
 	public function getMainShop()
 	{
 		return $this->getShopRepository()->findOneBy([ "main_id" => null ]);
+
+		// return Shopware()->Shop()->getMain();
 	}
 }
