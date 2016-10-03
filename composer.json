@@ -7,6 +7,9 @@
         "pisc/upperscore": "*",
         "pisc/arrr": "*"
     },
+    "require-dev": {
+        "phpunit/phpunit": "5.*"
+    },
     "authors": [
         {
             "name": "Pieter Scheffers",

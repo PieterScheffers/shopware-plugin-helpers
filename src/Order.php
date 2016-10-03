@@ -41,12 +41,12 @@ class Order
 		35 => "The process has been cancelled"
 	];
  
-	public static function getPaymentStatusName($int)
+	public static function paymentStatusName($int)
 	{
 		return u\def(static::$paymentStatuses, $int, null);
 	}
 
-	public static function getPaymentStatusNumber($name)
+	public static function paymentStatusNumber($name)
 	{
 		$name = str_replace( " ", "_", strtolower($name) );
 
@@ -54,17 +54,19 @@ class Order
 			->mapIt(function($s) {
 				return str_replace( " ", "_", strtolower($s) );
 			})
-			->detect(function($s) use ($name) {
+			->filterIt(function($s) use ($name) {
 				return $s == $name;
-			});
+			})
+			->keys()
+			->first();
 	}
 
-	public static function getOrderStatusName($int)
+	public static function orderStatusName($int)
 	{
 		return u\def(static::$orderStatuses, $int, null);
 	}
 
-	public static function getOrderStatusNumber($name)
+	public static function orderStatusNumber($name)
 	{
 		$name = str_replace( " ", "_", strtolower($name) );
 
@@ -72,9 +74,11 @@ class Order
 			->mapIt(function($s) {
 				return str_replace( " ", "_", strtolower($s) );
 			})
-			->detect(function($s) use ($name) {
+			->filterIt(function($s) use ($name) {
 				return $s == $name;
-			});
+			})
+			->keys()
+			->first();
 	}
 
 }
