@@ -5,6 +5,7 @@ namespace pisc\Shopware;
 use Doctrine\Common\Collections\Criteria;
 use pisc\Arrr\Ar;
 use pisc\Shopware\Category;
+use Shopware\Components\Model\ModelEntity;
 
 class Shop
 {
@@ -88,7 +89,7 @@ class Shop
 
 	public function getConfigValue($shopId, $key, $default = null)
 	{
-		if( $shopId instanceof Shopware\Models\Shop\Shop ) $shopId = $shop->getId();
+		if( $shopId instanceof ModelEntity ) $shopId = $shop->getId();
 
 		if( !empty($shopId) )
 		{

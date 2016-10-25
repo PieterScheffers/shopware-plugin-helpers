@@ -6,6 +6,7 @@ use Shopware_Components_Plugin_Bootstrap;
 use Shopware\Models\Config\Element;
 use Shopware_Components_Config;
 use pisc\Arrr\Ar;
+use Shopware\Components\Model\ModelEntity;
 
 class ShopwareConfig 
 {
@@ -40,7 +41,7 @@ class ShopwareConfig
 
 	public function getValue($shopId, $key, $default = null)
 	{
-		if( $shopId instanceof Shopware\Models\Shop\Shop ) $shopId = $shop->getId();
+		if( $shopId instanceof ModelEntity ) $shopId = $shop->getId();
 
 		if( !empty($shopId) )
 		{
